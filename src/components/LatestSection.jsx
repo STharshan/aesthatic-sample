@@ -1,26 +1,35 @@
-import React from "react";
+'use client'; // if using Next.js
+
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function LatestSection() {
   const articles = [
     {
       title: "Skincare Simplified: Expert Tips",
       date: "01.02.2025",
-      image:
-        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500&auto=format&fit=crop",
+      image: "l1.png",
     },
     {
       title: "The Natural Path to Better Skin",
       date: "01.02.2025",
-      image:
-        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500&auto=format&fit=crop",
+      image: "l2.png",
     },
     {
       title: "Nurture Your Skin with Nature",
       date: "01.02.2025",
-      image:
-        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500&auto=format&fit=crop",
+      image: "l3.png",
     },
   ];
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // animation duration in ms
+      once: true,     // animate only once
+      offset: 100,    // offset for triggering
+    });
+  }, []);
 
   return (
     <section className="py-16 bg-white">
@@ -35,6 +44,8 @@ export default function LatestSection() {
           {articles.map((article, index) => (
             <div
               key={index}
+              data-aos="fade-up"
+              data-aos-delay={index * 150} // stagger animation
               className="flex flex-col items-start space-y-3 group"
             >
               <div className="overflow-hidden w-full">
