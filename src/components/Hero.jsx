@@ -25,7 +25,7 @@ const HeroSection = () => {
         <h1
           data-aos="fade-up"
           data-aos-delay="200"
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold max-w-4xl mx-auto leading-tight"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl mt-20 font-bold max-w-4xl mx-auto leading-tight"
         >
           Nature’s Way to Healthy, Radiant Skin.
         </h1>
