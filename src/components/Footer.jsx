@@ -35,6 +35,22 @@ export default function Footer() {
             </ul>
           </div>
         </div>
+
+      {/* Bottom Bar - Copyright */}
+      </div>
+         {/* Bottom Bar - Powered By */}
+      <div className="text-center font-semibold text-xs sm:text-sm mt-2 md:text-base">
+        <p>
+          Powered by{" "}
+          <a
+            href="https://www.ansely.co.uk/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-800 hover:underline transition-all duration-300"
+          >
+            Ansely
+          </a>
+        </p>
       </div>
     </footer>
   );

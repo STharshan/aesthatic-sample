@@ -1,124 +1,101 @@
+"use client";
 import React, { useState, useEffect } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { FaSearch, FaQuestionCircle } from "react-icons/fa";
+import { FiMenu, FiX } from "react-icons/fi";
 
-const Navbar = () => {
+export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const toggleMenu = () => setIsOpen(!isOpen);
-
-  // Detect scroll position
+  // Detect scroll for background color change
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) setIsScrolled(true);
-      else setIsScrolled(false);
+      setIsScrolled(window.scrollY > 50);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <nav
-      className={`fixed top-0 left-0 w-full z-50 px-6 py-4 transition-all duration-300 ${
-        isScrolled ? "bg-black shadow-md text-white" : "bg-transparent text-white"
-      }`}
+    <header
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+        isScrolled
+          ? "bg-black/90 backdrop-blur-md shadow-md"
+          : "bg-transparent backdrop-blur-sm"
+      } text-[#f0f0f0] font-inter`}
     >
-      <div className="max-w-screen-xl mx-auto flex items-center justify-between">
-        {/* Logo */}
-        <div className="text-2xl font-bold">Basalt</div>
-
-        {/* Desktop Menu */}
-        <ul className="hidden md:flex space-x-8 font-semibold">
-          <li>
-            <a href="#shop" className="hover:text-gray-500 transition-colors">
-              Shop
-            </a>
-          </li>
-          <li>
-            <a href="#about" className="hover:text-gray-500 transition-colors">
-              About
-            </a>
-          </li>
-          <li>
+      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center py-4 relative">
+        {/* Left Nav */}
+        <nav className="hidden md:flex gap-6 text-sm">
+          {["Shop", "About", "Articles", "Contact"].map((item) => (
             <a
-              href="#articles"
-              className="hover:text-gray-500 transition-colors"
+              key={item}
+              href={`#${item.toLowerCase()}`}
+              className="hover:text-white transition-colors duration-300"
             >
-              Articles
+              {item}
             </a>
-          </li>
-          <li>
-            <a
-              href="#contact"
-              className="hover:text-gray-500 transition-colors"
-            >
-              Contact
-            </a>
-          </li>
-        </ul>
+          ))}
+        </nav>
 
-        {/* Mobile Hamburger Button */}
-        <div className="md:hidden">
+        {/* Center Logo */}
+        <div className="text-white font-bold text-lg tracking-wide absolute left-1/2 -translate-x-1/2">
+          ©BASALT
+        </div>
+
+        {/* Right Side: Icons + Menu */}
+        <div className="flex items-center gap-5 text-sm ml-auto">
+          {/* Desktop Right Icons */}
+          <div className="hidden md:flex items-center gap-5">
+            <div className="flex items-center gap-1 cursor-pointer hover:opacity-80">
+              <span role="img" aria-label="flag">
+                🇺🇸
+              </span>
+            </div>
+            <a
+              href="#account"
+              className="hover:text-white transition-colors duration-300"
+            >
+              Account
+            </a>
+            <FaSearch className="cursor-pointer hover:text-white transition-colors duration-300" />
+            <FaQuestionCircle className="cursor-pointer hover:text-white transition-colors duration-300" />
+          </div>
+
+          {/* Mobile Menu Toggle aligned RIGHT */}
           <button
-            onClick={toggleMenu}
-            aria-label="Toggle menu"
-            className="focus:outline-none"
+            className="md:hidden text-white text-2xl ml-auto"
+            onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
+            {isOpen ? <FiX /> : <FiMenu />}
           </button>
         </div>
       </div>
 
       {/* Mobile Dropdown Menu */}
-      <div
-        className={`md:hidden absolute top-full left-0 w-full shadow-md transform transition-all duration-300 ${
-          isOpen
-            ? "translate-y-0 opacity-100 bg-white text-black"
-            : "-translate-y-5 opacity-0 pointer-events-none"
-        }`}
-      >
-        <ul className="flex flex-col items-center space-y-4 py-6 font-semibold">
-          <li>
-            <a
-              href="#shop"
-              className="hover:text-gray-500 transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              Shop
-            </a>
-          </li>
-          <li>
-            <a
-              href="#about"
-              className="hover:text-gray-500 transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              About
-            </a>
-          </li>
-          <li>
-            <a
-              href="#articles"
-              className="hover:text-gray-500 transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              Articles
-            </a>
-          </li>
-          <li>
-            <a
-              href="#contact"
-              className="hover:text-gray-500 transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              Contact
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+      {isOpen && (
+        <div className="md:hidden bg-black/95 backdrop-blur-md py-5 transition-all duration-300">
+          <nav className="flex flex-col items-center gap-5 text-sm">
+            {["Shop", "About", "Articles", "Contact", "Account"].map((item) => (
+              <a
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                className="hover:text-white transition-colors duration-300"
+                onClick={() => setIsOpen(false)}
+              >
+                {item}
+              </a>
+            ))}
+            <div className="flex items-center gap-5 pt-2">
+              <FaSearch className="cursor-pointer hover:text-white transition-colors duration-300" />
+              <FaQuestionCircle className="cursor-pointer hover:text-white transition-colors duration-300" />
+              <span role="img" aria-label="flag" className="cursor-pointer">
+                🇺🇸
+              </span>
+            </div>
+          </nav>
+        </div>
+      )}
+    </header>
   );
-};
-
-export default Navbar;
+}
