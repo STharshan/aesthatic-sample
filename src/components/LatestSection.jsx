@@ -12,19 +12,19 @@ export default function LatestSection() {
       title: "The Natural Path to Better Skin",
       date: "01.02.2025",
       image:
-        "https://images.unsplash.com/photo-1508182311256-e3f7d63b88b3?w=500&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500&auto=format&fit=crop",
     },
     {
       title: "Nurture Your Skin with Nature",
       date: "01.02.2025",
       image:
-        "https://images.unsplash.com/photo-1611817756702-9b2eaf299f1f?w=500&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500&auto=format&fit=crop",
     },
   ];
 
   return (
     <section className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-4">
         {/* Title */}
         <h2 className="text-2xl md:text-3xl font-semibold text-center mb-12 text-gray-900">
           The Latest

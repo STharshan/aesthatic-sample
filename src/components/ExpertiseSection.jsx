@@ -7,7 +7,7 @@ export default function ExpertiseSection() {
       description:
         "Give your hands the care they deserve! Our manicures are designed to improve the health and appearance of your nails.",
       image:
-        "https://images.unsplash.com/photo-1601042879364-f3947d3f9e87?w=500&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1603398938378-e54eab446dde?w=500&auto=format&fit=crop",
     },
     {
       title: "Massage",
@@ -21,13 +21,13 @@ export default function ExpertiseSection() {
       description:
         "Our team of stylists will help you find the perfect hairstyle for your face and style.",
       image:
-        "https://images.unsplash.com/photo-1595475038784-bbe439ff41e1?w=500&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1603398938378-e54eab446dde?w=500&auto=format&fit=crop",
     },
   ];
 
   return (
     <section className="py-16 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 text-center">
+      <div className="max-w-6xl mx-auto px-4 text-center">
         <h2 className="text-2xl md:text-3xl font-serif text-gray-800 mb-10 tracking-wide">
           OUR AREAS OF EXPERTISE
         </h2>
